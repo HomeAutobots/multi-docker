@@ -6,20 +6,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t bobanoodle/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t catdad404/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true bobanoodle/react-test npm test
+  - docker run -e CI=true catdad404/react-test npm test
 
 after_success:
-  - docker build -t bobanoodle/multi-client ./client
-  - docker build -t bobanoodle/multi-nginx ./nginx
-  - docker build -t bobanoodle/multi-server ./server
-  - docker build -t bobanoodle/multi-worker ./worker
+  - docker build -t catdad404/multi-client ./client
+  - docker build -t catdad404/multi-nginx ./nginx
+  - docker build -t catdad404/multi-server ./server
+  - docker build -t catdad404/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push bobanoodle/multi-client
-  - docker push bobanoodle/multi-nginx
-  - docker push bobanoodle/mulit-server
-  - docker push bobanoodle/multi-worker
+  - docker push catdad404/multi-client
+  - docker push catdad404/multi-nginx
+  - docker push catdad404/mulit-server
+  - docker push catdad404/multi-worker
